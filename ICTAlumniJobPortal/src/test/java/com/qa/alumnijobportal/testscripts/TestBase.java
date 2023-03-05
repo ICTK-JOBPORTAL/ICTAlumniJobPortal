@@ -10,7 +10,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
@@ -46,17 +45,25 @@ WebDriver driver=null;
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 	}
-	@AfterTest
-	public void closepage() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.quit();
-	}
+	
+	
 	
 	@AfterMethod
 	public void tearDownMethod(ITestResult result) {
 		if(result.getStatus()==ITestResult.FAILURE) 
 		{
 			Screenshot.captureScreenshot(driver);
-		}
+			
+		}}
+		public void closepage1() {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			driver.quit();
+	}
+
+
+
+	private void closepage() {
+		// TODO Auto-generated method stub
+		
 	}
 }
